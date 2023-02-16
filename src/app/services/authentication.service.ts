@@ -14,10 +14,8 @@ export class AuthenticationService {
 
     this.afa.onAuthStateChanged((user)=> {
       if(user){
-        console.log('yep')
         this.sessionState.next(true)
       }else {
-        console.log('nope')
         this.sessionState.next(false)
       }
     })

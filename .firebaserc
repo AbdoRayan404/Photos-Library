@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "iqraa-task": {
+      "hosting": {
+        "photosLibrary": [
+          "iqraa-task"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "iqraa-task"
+  }
+}

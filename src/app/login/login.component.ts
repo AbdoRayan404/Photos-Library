@@ -23,13 +23,13 @@ export class LoginComponent implements OnInit {
   async login() {
     if(this.loginFormGroup.valid){
       await this.auth.loginWithRegister(this.loginFormGroup.value.email, this.loginFormGroup.value.password)
-      this.router.navigate(['home'])
+      this.router.navigate(['photos'])
     }
   }
 
   async loginWithGoogle() {
     this.auth.loginWithGoogle().then(logged => {
-      this.router.navigate(['home'])
+      this.router.navigate(['photos'])
     })
   }
 }

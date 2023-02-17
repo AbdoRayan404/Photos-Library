@@ -1,0 +1,14 @@
+<div class="flex flex-col">
+    <h1 class="font-bold text-3xl">Photos Library</h1>
+    <div class="flex float-left">
+        <app-photo *ngFor="let photo of photos" [title]="photo.title" [imgUrl]="photo.url" [date]="photo.date" [id]="photo.id"></app-photo>
+    </div>
+    <div class="flex flex-col items-center">
+        <h1 class="font-bold text-3xl">Add an image</h1>
+        <form [formGroup]="uploadImageForm" (ngSubmit)="submit()" class="flex flex-col w-80">
+            Title: <input formControlName="title" placeholder="What about... Memory" class="mb-4 block w-full px-4 py-2 border border-solid border-gray-300 rounded-lg">
+            File: <input formControlName="file" (change)="upload($event)" type="file" class="mb-2">
+            <button class="bg-blue-600 text-white font-medium rounded h-8 shadow-md">Upload</button>
+        </form>
+    </div>
+</div>

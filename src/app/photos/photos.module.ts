@@ -5,6 +5,7 @@ import { PhotosRoutingModule } from './photos-routing.module';
 import { PhotosComponent } from './photos.component';
 import { PhotoComponent } from './photo/photo.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     PhotosRoutingModule,
     ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class PhotosModule { }

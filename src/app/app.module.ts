@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from './shared/shared.module';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    FroalaEditorModule,
+    FroalaViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   async logout() {
     try{
       await this.afa.signOut()
-      this.router.navigate(['login'])
+      this.router.navigate(['auth/login'])
     }catch(err) {
       console.log(err)
     }

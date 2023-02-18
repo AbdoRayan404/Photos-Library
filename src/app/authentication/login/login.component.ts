@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   async login() {
     if(this.loginFormGroup.valid){
-      await this.auth.loginWithRegister(this.loginFormGroup.value.email, this.loginFormGroup.value.password)
+      await this.auth.login(this.loginFormGroup.value.email, this.loginFormGroup.value.password)
       this.router.navigate(['photos'])
     }
   }

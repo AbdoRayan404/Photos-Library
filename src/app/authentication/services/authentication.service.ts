@@ -29,14 +29,6 @@ export class AuthenticationService {
     await this.afa.signInWithEmailAndPassword(email, password)
   }
 
-  async loginWithRegister(email: string, password: string) {
-    try {
-      await this.afa.signInWithEmailAndPassword(email, password)
-    }catch(err) {
-      await this.afa.createUserWithEmailAndPassword(email, password)
-    }
-  }
-
   loginWithGoogle() {
     return this.afa.signInWithPopup(new firebase.auth.GoogleAuthProvider())
   }

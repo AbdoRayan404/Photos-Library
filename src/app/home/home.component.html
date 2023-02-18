@@ -1,0 +1,6 @@
+<app-navbar></app-navbar>
+<div class="flex flex-col items-center">
+    <div [froalaEditor] class="m-auto w-11/12 mb-6" [(froalaModel)]="content"></div>
+    <div class="mb-4 text-green-600">{{ saveStatus }}</div>
+    <button class="bg-blue-600 text-white font-medium rounded w-20 m-auto h-8 shadow-md" (click)="save()">Save</button>
+</div>

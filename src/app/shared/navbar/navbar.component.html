@@ -1,5 +1,14 @@
 <div class="w-full h-12 shadow-md flex items-center mb-4">
-    <div class="font-bold cursor-pointer text-xl absolute right-0 mr-5" (click)="logout()">Logout</div>
-    <div class="font-bold cursor-pointer text-xl ml-4 mr-4" (click)="goToHome()">Home</div>
-    <div class="font-bold cursor-pointer text-xl" (click)="goToPhotos()">Photos</div>
+    <div class="flex justify-center flex-row cursor-pointer" (click)="goToHome()">
+        <img src="https://www.svgrepo.com/show/505393/home-1.svg" class="w-9 ml-2 mr-1">
+        <span class="font-bold text-2xl mr-3">Home</span>
+    </div>
+    <div class="flex justify-center flex-row cursor-pointer" (click)="goToPhotos()">
+        <img src="https://www.svgrepo.com/show/505316/camera.svg" class="w-9 ml-2 mr-1" >
+        <span class="font-bold text-2xl mr-3">Gallery</span>
+    </div>
+    <div (click)="logout()" class="flex justify-center flex-row cursor-pointer w-32 absolute right-0">
+        <img src="https://www.svgrepo.com/show/505419/logout.svg" class="w-9 mr-1">
+        <span class="font-bold text-2xl mr-3">Logout</span>
+    </div>
 </div>

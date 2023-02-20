@@ -13,6 +13,7 @@ export class PhotosComponent implements OnInit{
   photos: any
   uploadImageForm: FormGroup
   file: any
+  uploadState: string
   constructor(private pms: PhotosManagerService, private fb: FormBuilder) { }
   
   ngOnInit(): void {
@@ -39,9 +40,11 @@ export class PhotosComponent implements OnInit{
     this.file = event.target.files[0]
   }
 
-  submit() {
+  async submit() {
     let path = `photos/${moment.utc().unix()}_${this.file.name}`
 
     this.pms.uploadImage(this.uploadImageForm.value.title, path, this.file)
+
+    this.uploadImageForm.reset()
   }
 }

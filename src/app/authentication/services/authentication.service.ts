@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
 export class AuthenticationService {
 
   public sessionState: Subject<boolean>
+  public errorCodesToMessages: any
   constructor(private afa: AngularFireAuth) { 
     this.sessionState = new Subject<boolean>
 
@@ -19,6 +20,14 @@ export class AuthenticationService {
         this.sessionState.next(false)
       }
     })
+
+    this.errorCodesToMessages = {
+      'auth/user-not-found': 'This user does not exist.',
+      'auth/wrong-password': 'Password is incorrect.',
+      'auth/invalid-email': 'Email is invalid.',
+      'auth/email-already-in-use': 'This email is already used.',
+      'auth/invalid-password': 'Password should be 6-32 characters'
+    }
   }
 
   async register(email: string, password: string) {

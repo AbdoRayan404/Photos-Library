@@ -11,19 +11,28 @@ import { AuthenticationService } from '../services/authentication.service';
 export class RegisterComponent implements OnInit {
 
   registerFormGroup: FormGroup
-  constructor(private fb: FormBuilder, private authentication: AuthenticationService, private router: Router) { }
+  registerState: string
+  constructor(private fb: FormBuilder, private auth: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
     this.registerFormGroup = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(32)]]
     })
   }
 
   async register() {
     if(this.registerFormGroup.valid) {
-      await this.authentication.register(this.registerFormGroup.value.email, this.registerFormGroup.value.password)
-      this.router.navigate(['photos'])
+      try{
+        await this.auth.register(this.registerFormGroup.value.email, this.registerFormGroup.value.password)
+        this.router.navigate(['photos'])
+      }catch(err: any) {
+        this.registerState = this.auth.errorCodesToMessages[err.code]
+
+        setTimeout(()=>{
+          this.registerState = ''
+        }, 2000)
+      }
     }
   }
 }

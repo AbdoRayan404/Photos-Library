@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
   
   ngOnInit(): void {
     this.loginFormGroup = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(32)]]
     })
   }
 
@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
       try{
         await this.auth.login(this.loginFormGroup.value.email, this.loginFormGroup.value.password)
         this.router.navigate(['photos'])
-      }catch(err) {
-        this.loginState = 'Email or Password is incorrect.'
+      }catch(err: any) {
+        this.loginState = this.auth.errorCodesToMessages[err.code]
 
         setTimeout(()=>{
           this.loginState = ''

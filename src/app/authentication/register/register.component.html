@@ -1,10 +1,12 @@
-<div class="m-auto w-96 h-70 flex flex-col shadow-md items-center mt-5">
+<div class="m-auto w-96 h-96 flex flex-col shadow-xl items-center mt-32">
     <h1 class="text-3xl font-bold mb-2">Register a new account</h1>
     <form [formGroup]="registerFormGroup" (ngSubmit)="register()" class="w-96 h-auto flex flex-col items-center mb-4" #form="ngForm">
-        <input formControlName="email" type="email" placeholder="email..." class="mb-4 block w-full px-4 py-2 border border-solid border-gray-300 rounded-lg">
-        <input formControlName="password" type="password" placeholder="password..." class="mb-4 black w-full  px-4 py-2 border border-solid border-gray-300 rounded-lg">
-        <div *ngIf="registerFormGroup.invalid && (registerFormGroup.touched || form.submitted)" class="text-red-500">Password or Email is Invalid</div>
-        <button class="bg-blue-600 text-white font-medium text-xl rounded w-28 h-8 shadow-md">Register</button>
+        <input formControlName="email" type="email" placeholder="email..." class="block w-11/12 px-4 py-2 border border-solid border-gray-300 rounded-lg">
+        <div *ngIf="(registerFormGroup.controls['email'].touched && registerFormGroup.controls['email'].dirty) && registerFormGroup.controls['email'].invalid" class="text-red-600">This email is invalid</div>
+        <input formControlName="password" type="password" placeholder="password..." class="mt-4 black w-11/12 px-4 py-2 border border-solid border-gray-300 rounded-lg">
+        <div *ngIf="(registerFormGroup.controls['password'].touched && registerFormGroup.controls['password'].dirty) && registerFormGroup.controls['password'].invalid" class="text-red-600">Password should be 6-32 characters</div>
+        <div class=" text-red-600">{{ registerState }}</div>
+        <button class="bg-blue-600 text-white disabled:bg-gray-500 font-medium rounded w-24 h-9 shadow-md mt-4" [disabled]="!registerFormGroup.valid">Register</button>
     </form>
     <a href="auth/login" class=" text-blue-800 underline">Go to Login?</a>
 </div>
